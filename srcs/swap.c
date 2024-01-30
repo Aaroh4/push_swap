@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahamalai <ahamalai@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: ahamalai <ahamalai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:58:38 by ahamalai          #+#    #+#             */
-/*   Updated: 2024/01/11 15:30:49 by ahamalai         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:45:44 by ahamalai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.c"
+
+#include "../includes/push_swap.h"
 
 void	ft_swap(t_stack_node **stack)
 {
@@ -19,7 +20,7 @@ void	ft_swap(t_stack_node **stack)
 	t_stack_node	*node;
 
 	node = *stack;
-	next = stack->next;
+	next = node->next;
 	if (!node && !next)
 		return ;
 	temp_nbr = node->nbr;
@@ -28,4 +29,29 @@ void	ft_swap(t_stack_node **stack)
 	node->index = next->index;
 	next->nbr = temp_nbr;
 	next->index = temp_index;
+}
+
+void	ft_swap_a(t_stack_node **a)
+{
+	if (ft_stack_len(*a) < 2)
+		return ;
+	ft_swap(a);
+	write(1, "sa\n", 3);
+}
+
+void	ft_swap_b(t_stack_node **b)
+{
+	if (ft_stack_len(*b) < 2)
+		return ;
+	ft_swap(b);
+	write(1, "sb\n", 3);
+}
+
+void	ft_swap_swap(t_stack_node **a, t_stack_node **b)
+{
+	if (ft_stack_len(*a) < 2 || ft_stack_len(*b) < 2)
+		return ;
+	ft_swap(a);
+	ft_swap(b);
+	write(1, "ss\n", 3);
 }
